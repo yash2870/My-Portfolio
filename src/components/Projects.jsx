@@ -2,6 +2,7 @@ import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
 const Projects = () => {
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
   const { ref: project1Ref, inView: project1InView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -18,7 +19,10 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-20 bg-black text-center text-white"
+      ref={ref}
+      className={`py-20 bg-gradient-to-b from-gray-900 to-black text-center text-white transition-opacity duration-1000 ${
+        inView ? "opacity-100" : "opacity-0"
+      }`}
     >
       <h2 className="text-3xl font-bold mb-8">Projects</h2>
       <div className="space-y-8">
