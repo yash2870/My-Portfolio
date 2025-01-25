@@ -2,14 +2,20 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 
 const Experience = () => {
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
+  
   const { ref: csrboxRef, inView: csrboxInView } = useInView({ triggerOnce: true, threshold: 0.2 });
   const { ref: oasisRef, inView: oasisInView } = useInView({ triggerOnce: true, threshold: 0.2 });
   const { ref: ardentRef, inView: ardentInView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
     <section
-      id="experience"
-      className="py-20 bg-gradient-to-b from-black to-gray-900 text-center text-white"
+    id="experience"
+    ref={ref}
+      className={`py-20 bg-gradient-to-b from-gray-900 to-black text-center text-white transition-opacity duration-1000 ${
+        inView ? "opacity-100" : "opacity-0"
+      }`}
+     
     >
       <h2 className="text-3xl font-bold mb-8">Internships & Experience</h2>
       <div className="space-y-8">
