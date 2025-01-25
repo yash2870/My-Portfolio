@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 
 const Contact = () => {
   const { ref, inView } = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.1,
   });
   const Mailto = ({ email, subject = '', body = '', children }) => {
